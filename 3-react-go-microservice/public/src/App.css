@@ -28,6 +28,27 @@
   color: #61dafb;
 }
 
+label,
+input {
+  /* In order to define widths */
+  display: inline-block;
+}
+
+label {
+  font-size: 14px;
+  width: 30%;
+  text-align: right;
+}
+
+label+input {
+  width: 30%;
+  margin: 0 30% 0 4%;
+}
+
+#go-button {
+  margin-top: 30px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

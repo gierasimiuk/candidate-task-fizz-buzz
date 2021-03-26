@@ -1,23 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Welcome to the FizzBuzz calculator</h1>
+        <p>Enter the start and end numbers for the calculation and then press Go!</p>
+        <form action="http://127.0.0.1:8000/fizzbuzz" method="post">
+          <label>Start: </label>
+          <input type="text" name="start" />
+          <label>End: </label>
+          <input type="text" name="end" />
+          <input type="submit" value="Go!" id="go-button" />
+        </form>
       </header>
     </div>
   );

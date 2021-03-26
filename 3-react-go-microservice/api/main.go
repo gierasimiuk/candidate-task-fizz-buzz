@@ -47,6 +47,6 @@ func fizzbuzz(w http.ResponseWriter, r *http.Request) {
 	// TODO Send result back in JSON format
 	for _, s := range fizzBuzzResults {
 		input := strconv.Itoa(s.Input)
-		fmt.Fprintf(w, input+" "+s.Output+"<br>")
+		fmt.Fprintf(w, "Input: "+input+", Output: "+s.Output)
 	}
 }
