@@ -41,6 +41,11 @@ func fizzbuzz(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Please enter numbers only")
 		return
 	}
+	if start >= end {
+		log.Print(endErr)
+		fmt.Fprintf(w, "Ensure end number is greater than start")
+		return
+	}
 
 	// Perform fizzbuzz calculation
 	fizzBuzzResults, _ := fizzBuzz(start, end)
