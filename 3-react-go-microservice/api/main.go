@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -41,12 +42,10 @@ func fizzbuzz(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Perform fizzbuzz calculation
 	fizzBuzzResults, _ := fizzBuzz(start, end)
-	log.Print(fizzBuzzResults)
 
-	// TODO Send result back in JSON format
-	for _, s := range fizzBuzzResults {
-		input := strconv.Itoa(s.Input)
-		fmt.Fprintf(w, "Input: "+input+", Output: "+s.Output)
-	}
+	// Send data back as JSON - ensuring header is set appropiately
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(fizzBuzzResults)
 }
