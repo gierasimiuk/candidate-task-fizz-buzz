@@ -14,10 +14,17 @@ import (
 )
 
 func main() {
-	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/fizzbuzz", fizzbuzz).Methods("POST")
+	router := routes()
 	log.Print("Server listing on http://127.0.0.1:8000")
 	log.Fatal(http.ListenAndServe(":8000", router))
+}
+
+// Build our router and set routes for the microservice
+// then return the mux.Router instance
+func routes() (router *mux.Router) {
+	router = mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/fizzbuzz", fizzbuzz).Methods("POST")
+	return router
 }
 
 func fizzbuzz(w http.ResponseWriter, r *http.Request) {
@@ -50,7 +57,7 @@ func fizzbuzz(w http.ResponseWriter, r *http.Request) {
 	// Perform fizzbuzz calculation
 	fizzBuzzResults, _ := fizzBuzz(start, end)
 
-	// Send data back as JSON - ensuring header is set appropiately
+	// Send data back as JSON - ensuring header is set appropriately
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(fizzBuzzResults)
 }
