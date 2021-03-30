@@ -27,6 +27,8 @@ func routes() (router *mux.Router) {
 	return router
 }
 
+// Handles a POST request to calculate fizzbuzz, given a start and end value
+// in the HTTP request, returning the result in JSON via the ResponseWriter
 func fizzbuzz(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
