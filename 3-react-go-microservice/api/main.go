@@ -39,13 +39,11 @@ func fizzbuzz(w http.ResponseWriter, r *http.Request) {
 	end, endErr := strconv.Atoi(r.FormValue("end"))
 
 	if startErr != nil {
-		// TODO HANDLE ERROR
 		log.Print(startErr)
 		fmt.Fprintf(w, "Please enter numbers only")
 		return
 	}
 	if endErr != nil {
-		// TODO HANDLE ERROR
 		log.Print(endErr)
 		fmt.Fprintf(w, "Please enter numbers only")
 		return
